@@ -1,0 +1,15 @@
+Write a function to reverse a Linked List in place. The function will take in the head of the list as input and return the new head of the list.
+
+
+def reverse(head):
+    current = head
+    nextnode = previous = None         # current will assigned to head, the first node. nextnode and previous will be used to help us change the order of the nodes in the linked list. 
+    
+    
+    while (current):		       # we will continue looping until current is not referencing a node in the linked list 
+        nextnode = current.nextnode    # make nextnode equal to the node to the right of our current node
+        current.nextnode = previous    # the node to the right of our current node is now considered the previous node, because we are reversing the linked list
+        previous = nextnode	       # previous is now assigned to the node to the right of our current node
+        current = previous	       # current is now assigned to previous (our current node is now the node that was to the right of our most-recent current node)
+    
+    return previous

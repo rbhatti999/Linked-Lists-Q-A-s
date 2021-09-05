@@ -1,0 +1,14 @@
+QUESTION: Given a singly linked list, write a function which takes in the first node in a singly linked list and returns a boolean indicating if the linked list contains a "cycle".
+A cycle is when a node's next point actually points back to a previous node in the list. This is also sometimes known as a circularly linked list.
+
+
+def cycle_check(node):
+
+    marker1 = marker2 = node            # assign marker1 and marker2 to node. Node in this case is the first node in the linked list. 
+    
+    while (marker2.nextnode and marker2.nextnode.nextnode):            # marker1 will eventually equal marker2 but only if the linked list is circular. This while loop will break if the linked list is linear (when either conditions points to "None")
+        marker1, marker2 = marker1.nextnode, marker2.nextnode.nextnode # marker2 will traverse the linked list at the twice the rate of marker1. Because of this, if the linked list is circular, then they will eventually be assigned to the same node. 
+        if (marker1 == marker2):
+            return True
+    
+    return False                        # return false because linked list is linear. This is because marker2 eventually would be equal to "None", or been assigned to a node that doesn't exist in the linked list. 

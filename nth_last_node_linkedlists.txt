@@ -1,0 +1,14 @@
+QUESTION: Write a function that takes a head node and an integer value n and then returns the nth to last node in the linked list.
+
+def nth_to_last_node(n, head):
+    marker1 = marker2 = head             # initialize 2 variables marker1 and marker2 to head node. We will use these two markers and assign them to separate nodes as we traverse throught the linked list. 
+    
+    for i in range(n-1):                 # with this while loop, we will set marker2 ahead of marker1 by the n-1. This is because we want to traverse thru the linked list while assigning marker1 and marker2 new nodes, while keeping the distance between them (n-1). Thus, when marker2 is at the end of the linked list marker 1 will be in the "nth" last node. 
+        if not marker2.nextnode:         # if marker2.nextnode refers to a node not in the linked list (the linked list is finished and the node marker2 is currently equal to points to "None")
+            return False
+        marker2 = marker2.nextnode       # keep assinging marker2 to new nodes 
+    
+    while (marker2.nextnode):            # keeping looping until marker2 points to "None"
+        marker1, marker2 = marker1.nextnode, marker2.nextnode   # assign marker1 and marker2 to new nodes
+    
+    return marker1                       # once the while loops ends (when marker2 is on the final node), then return marker1. marker1 will be in the nth last node position, because of the distance we kept between marker1 and marker2. 
